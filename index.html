@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>Claims Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <a class="brand" href="#" aria-label="Claims Tracker home">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <span>Claims Tracker</span>
+      </a>
+      <p class="header-caption">A clear view of every claim</p>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">WORKSPACE</p>
+      <h1 id="page-title">Claims overview</h1>
+      <p class="intro-copy">Add a claim to keep its key details organized in one place.</p>
+    </section>
+
+    <section class="panel form-panel" aria-labelledby="form-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">NEW ENTRY</p>
+          <h2 id="form-title">Add a claim</h2>
+        </div>
+      </div>
+      <form id="claim-form">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="claim-id">Claim ID</label>
+            <input id="claim-id" name="claimId" type="text" placeholder="e.g. CL-1001" required>
+          </div>
+          <div class="form-field">
+            <label for="patient-name">Patient name (fictional)</label>
+            <input id="patient-name" name="patientName" type="text" placeholder="e.g. Alex Example" required>
+          </div>
+          <div class="form-field">
+            <label for="insurance-payer">Insurance payer</label>
+            <input id="insurance-payer" name="insurancePayer" type="text" placeholder="e.g. Sample Health Plan" required>
+          </div>
+          <div class="form-field">
+            <label for="amount">Amount</label>
+            <input id="amount" name="amount" type="number" min="0" step="0.01" placeholder="0.00" required>
+          </div>
+          <div class="form-field">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+              <option value="" disabled selected>Select status</option>
+              <option value="Open">Open</option>
+              <option value="Denied">Denied</option>
+              <option value="Paid">Paid</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="primary-button" type="submit">
+            <span aria-hidden="true">+</span>
+            Add claim
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel table-panel" aria-labelledby="claims-title">
+      <div class="table-heading">
+        <div>
+          <p class="eyebrow">YOUR RECORDS</p>
+          <h2 id="claims-title">All claims <span class="count-badge" id="claim-count">0</span></h2>
+        </div>
+      </div>
+      <div class="claims-overview">
+        <div class="filter-bar" role="group" aria-label="Filter claims by status">
+          <button class="filter-button is-active" type="button" data-filter="All" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter="Open" aria-pressed="false">Open</button>
+          <button class="filter-button" type="button" data-filter="Denied" aria-pressed="false">Denied</button>
+          <button class="filter-button" type="button" data-filter="Paid" aria-pressed="false">Paid</button>
+        </div>
+        <div class="summary-bar" aria-label="Claim totals by status">
+          <div class="summary-card" data-summary="All">
+            <span class="summary-label">All claims</span>
+            <strong class="summary-amount">$0.00</strong>
+            <span class="summary-count">0 claims</span>
+          </div>
+          <div class="summary-card" data-summary="Open">
+            <span class="summary-label">Open</span>
+            <strong class="summary-amount">$0.00</strong>
+            <span class="summary-count">0 claims</span>
+          </div>
+          <div class="summary-card" data-summary="Denied">
+            <span class="summary-label">Denied</span>
+            <strong class="summary-amount">$0.00</strong>
+            <span class="summary-count">0 claims</span>
+          </div>
+          <div class="summary-card" data-summary="Paid">
+            <span class="summary-label">Paid</span>
+            <strong class="summary-amount">$0.00</strong>
+            <span class="summary-count">0 claims</span>
+          </div>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Claim ID</th>
+              <th scope="col">Patient name</th>
+              <th scope="col">Insurance payer</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Status</th>
+              <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="claims-list">
+            <tr class="empty-row">
+              <td colspan="6">
+                <span class="empty-icon" aria-hidden="true">—</span>
+                <strong>No claims yet</strong>
+                <span>Your claims will appear here after you add one.</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <p id="form-message" class="visually-hidden" role="status" aria-live="polite"></p>
+  </main>
+
+  <footer class="site-footer">Claims Tracker <span aria-hidden="true">·</span> Keep things moving</footer>
+</body>
+</html>
